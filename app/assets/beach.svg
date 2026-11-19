@@ -1,46 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2b1055"/><stop offset=".45" stop-color="#c62b7e"/>
-      <stop offset=".75" stop-color="#ff7e4a"/><stop offset="1" stop-color="#ffc46b"/>
+      <stop offset="0" stop-color="#2b1055"/>
+      <stop offset="0.45" stop-color="#c22a72"/>
+      <stop offset="0.75" stop-color="#ff7a3d"/>
+      <stop offset="1" stop-color="#ffd76a"/>
     </linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ff9a5a"/><stop offset="1" stop-color="#3b1d6e"/>
-    </linearGradient>
-    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#4a2b5e"/><stop offset="1" stop-color="#1c1030"/>
+      <stop offset="0" stop-color="#ff8a5c"/>
+      <stop offset="0.5" stop-color="#a8327a"/>
+      <stop offset="1" stop-color="#3d1a5e"/>
     </linearGradient>
   </defs>
   <rect width="1080" height="1080" fill="url(#sky)"/>
-  <circle cx="540" cy="560" r="190" fill="#ffe9a8"/>
-  <circle cx="540" cy="560" r="150" fill="#ffd76a"/>
-  <rect x="0" y="640" width="1080" height="440" fill="url(#sea)"/>
-  <g fill="#ff8f5e" opacity=".55"><rect x="120" y="660" width="840" height="10"/><rect x="200" y="700" width="680" height="8"/><rect x="300" y="745" width="480" height="7"/></g>
-  <rect x="0" y="820" width="1080" height="260" fill="url(#road)"/>
-  <rect x="0" y="820" width="1080" height="14" fill="#ffd76a"/>
-  <g stroke="#ffd76a" stroke-width="10" stroke-dasharray="60 46"><line x1="540" y1="860" x2="540" y2="1080"/></g>
-  <!-- palms left -->
-  <g fill="#1c1030">
-    <path d="M150 830 Q140 620 170 520 L186 522 Q170 640 190 828 Z"/>
-    <path d="M178 520 Q90 470 40 500 Q120 500 160 540 Q110 560 60 600 Q140 590 175 545 Q200 470 280 450 Q210 500 190 540 Q260 520 320 560 Q240 560 180 555 Z"/>
+  <circle cx="540" cy="560" r="150" fill="#fff3c4"/>
+  <circle cx="540" cy="560" r="190" fill="#fff3c4" opacity="0.25"/>
+  <g fill="#ffffff" opacity="0.85">
+    <ellipse cx="230" cy="180" rx="120" ry="26"/>
+    <ellipse cx="300" cy="200" rx="90" ry="20"/>
+    <ellipse cx="820" cy="130" rx="140" ry="28"/>
+    <ellipse cx="880" cy="155" rx="90" ry="18"/>
   </g>
-  <!-- palms right -->
-  <g fill="#241239">
-    <path d="M950 830 Q960 650 930 560 L914 562 Q930 660 910 828 Z"/>
-    <path d="M922 560 Q1010 510 1060 540 Q980 540 940 575 Q990 595 1040 635 Q960 625 925 585 Q900 510 820 490 Q890 540 910 575 Q840 555 780 595 Q860 595 920 590 Z"/>
+  <rect y="620" width="1080" height="260" fill="url(#sea)"/>
+  <g fill="#ffd76a" opacity="0.7">
+    <rect x="60" y="650" width="220" height="10" rx="5"/>
+    <rect x="380" y="690" width="320" height="10" rx="5"/>
+    <rect x="120" y="740" width="280" height="10" rx="5"/>
+    <rect x="640" y="750" width="300" height="10" rx="5"/>
+    <rect x="240" y="800" width="360" height="10" rx="5"/>
   </g>
-  <!-- convertible -->
+  <path d="M0 880 Q 540 820 1080 880 L1080 1080 L0 1080 Z" fill="#e8a04c"/>
+  <path d="M0 920 Q 540 870 1080 920 L1080 1080 L0 1080 Z" fill="#d18a3a"/>
+  <g fill="#160a24">
+    <path d="M180 880 C 170 760 180 660 200 560 L 214 560 C 200 660 196 760 204 880 Z"/>
+    <path d="M200 600 C 140 560 90 560 40 590 C 100 590 150 600 200 620 Z"/>
+    <path d="M200 600 C 260 550 320 550 370 590 C 310 590 250 600 200 620 Z"/>
+    <path d="M200 580 C 170 520 160 470 170 420 C 190 470 200 520 206 580 Z"/>
+    <path d="M200 580 C 240 530 250 480 240 430 C 220 480 210 530 206 580 Z"/>
+  </g>
   <g>
-    <path d="M300 900 L330 830 L420 800 L700 800 L790 850 L830 900 Z" fill="#d9234f"/>
-    <path d="M340 835 L420 808 L690 808 L770 848 L360 848 Z" fill="#1c1030"/>
-    <rect x="330" y="880" width="480" height="26" rx="10" fill="#8f1030"/>
-    <circle cx="420" cy="920" r="52" fill="#140a24"/><circle cx="420" cy="920" r="26" fill="#e8e8e8"/>
-    <circle cx="720" cy="920" r="52" fill="#140a24"/><circle cx="720" cy="920" r="26" fill="#e8e8e8"/>
-    <rect x="120" y="880" width="60" height="14" rx="7" fill="#ffe9a8"/>
-    <rect x="880" y="880" width="60" height="14" rx="7" fill="#ff5e7a"/>
+    <path d="M760 880 L 900 880 L 830 700 Z" fill="#ff5fa2"/>
+    <path d="M830 700 L 830 880" stroke="#160a24" stroke-width="10"/>
+    <path d="M700 860 L 960 860 L 900 880 L 760 880 Z" fill="#c22a72"/>
+    <circle cx="830" cy="690" r="14" fill="#ffd76a"/>
   </g>
-  <!-- birds -->
-  <g stroke="#1c1030" stroke-width="6" fill="none" stroke-linecap="round">
-    <path d="M300 300 q20 -18 40 0 q20 -18 40 0"/><path d="M700 240 q16 -14 32 0 q16 -14 32 0"/><path d="M820 360 q14 -12 28 0 q14 -12 28 0"/>
+  <g fill="#160a24">
+    <path d="M520 1010 q 30 -14 60 0 q -30 10 -60 0 Z"/>
+    <path d="M620 1040 q 24 -12 48 0 q -24 8 -48 0 Z"/>
   </g>
 </svg>
