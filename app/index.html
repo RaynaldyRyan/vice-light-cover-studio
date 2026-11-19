@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Light Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">VL</span>
+    <div><h1>Vice Light Cover Studio</h1><p>Your photos, turned into Vice City sunset cover art. 100% offline — photos never leave this machine.</p></div>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">Undo</button>
+    <button id="redoBtn" type="button" title="Redo">Redo</button>
+  </div>
+</header>
+<main class="studio">
+  <aside class="panel" aria-label="Cover controls">
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="filebtn">Add your photos<input id="photoInput" type="file" accept="image/*" multiple></label>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="hint">Or tap a sample scene below. Click a panel in the preview, then pick which photo fills it. Drag a panel to move the photo, use Zoom to frame it.</p>
+      <div class="samples" id="samples"></div>
+    </section>
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div class="choices" id="layoutChoices"></div>
+    </section>
+    <section class="group">
+      <h2>3 · Grade</h2>
+      <div class="choices" id="gradeChoices"></div>
+      <label class="slider">Ink outlines <input id="inkRange" type="range" min="0" max="100" value="70"> <span id="inkVal">70%</span></label>
+      <label class="slider">Grain <input id="grainRange" type="range" min="0" max="100" value="35"> <span id="grainVal">35%</span></label>
+    </section>
+    <section class="group">
+      <h2>4 · Lettering</h2>
+      <label>Title <input id="titleInput" type="text" maxlength="28" value="VICE LIGHT"></label>
+      <label>Subtitle <input id="subtitleInput" type="text" maxlength="40" value="sunset over the boulevard"></label>
+      <label class="slider">Title size <input id="titleSizeRange" type="range" min="60" max="130" value="100"> <span id="titleSizeVal">100%</span></label>
+    </section>
+    <section class="group">
+      <h2>5 · Selected panel</h2>
+      <div id="panelInfo" class="panel-info">Click a panel in the preview to select it.</div>
+      <label class="slider">Zoom <input id="zoomRange" type="range" min="100" max="300" value="100"> <span id="zoomVal">100%</span></label>
+      <div class="row">
+        <button id="fillAllBtn" type="button">Fill all panels with this photo</button>
+        <button id="shuffleBtn" type="button">Shuffle photos</button>
+      </div>
+    </section>
+    <section class="group export">
+      <h2>6 · Export PNG</h2>
+      <div class="choices" id="sizeChoices"></div>
+      <button id="exportBtn" class="export-btn" type="button">Export PNG</button>
+      <button id="exportAllBtn" type="button">Export all 3 sizes</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <section class="stage" aria-label="Live preview">
+    <div class="canvas-wrap"><canvas id="preview" width="1080" height="1080"></canvas></div>
+    <p class="stage-hint">Live preview — drag inside a panel to reposition its photo. The export is rendered at full size: 1080×1080, 1080×1350 or 1920×1080.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
