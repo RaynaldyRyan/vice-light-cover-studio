@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0618"/><stop offset="1" stop-color="#2b1055"/>
+    </linearGradient>
+    <linearGradient id="wet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b1d6e"/><stop offset="1" stop-color="#0a0618"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#sky)"/>
+  <!-- buildings -->
+  <g fill="#140a24"><rect x="0" y="120" width="200" height="680"/><rect x="880" y="80" width="200" height="720"/></g>
+  <g fill="#1e0f38"><rect x="200" y="260" width="180" height="540"/><rect x="700" y="220" width="180" height="580"/></g>
+  <!-- neon signs -->
+  <g font-family="sans-serif" font-weight="bold" text-anchor="middle">
+    <rect x="30" y="300" width="150" height="120" rx="12" fill="#12082e" stroke="#ff2e88" stroke-width="6"/>
+    <text x="105" y="360" font-size="52" fill="#ff5e9e">NEON</text>
+    <text x="105" y="402" font-size="30" fill="#37e6ff">DINER</text>
+    <rect x="900" y="270" width="150" height="100" rx="12" fill="#12082e" stroke="#37e6ff" stroke-width="6"/>
+    <text x="975" y="332" font-size="44" fill="#37e6ff">OPEN</text>
+    <rect x="230" y="450" width="120" height="70" rx="10" fill="#12082e" stroke="#ffd76a" stroke-width="5"/>
+    <text x="290" y="498" font-size="34" fill="#ffd76a">PIZZA</text>
+    <rect x="730" y="420" width="120" height="70" rx="10" fill="#12082e" stroke="#ff5e7a" stroke-width="5"/>
+    <text x="790" y="468" font-size="34" fill="#ff5e7a">BAR</text>
+  </g>
+  <!-- street -->
+  <rect x="0" y="800" width="1080" height="280" fill="url(#wet)"/>
+  <g opacity=".5"><rect x="60" y="830" width="120" height="180" fill="#ff2e88"/><rect x="900" y="830" width="120" height="180" fill="#37e6ff"/><rect x="480" y="830" width="120" height="150" fill="#ffd76a"/></g>
+  <rect x="0" y="800" width="1080" height="8" fill="#ff5e9e" opacity=".7"/>
+  <!-- car -->
+  <g>
+    <path d="M330 800 L360 720 L470 690 L660 690 L740 740 L780 800 Z" fill="#d9234f"/>
+    <path d="M380 722 L470 698 L650 698 L715 738 L390 738 Z" fill="#37e6ff" opacity=".85"/>
+    <rect x="340" y="770" width="430" height="22" rx="10" fill="#8f1030"/>
+    <circle cx="430" cy="810" r="40" fill="#0a0618"/><circle cx="430" cy="810" r="18" fill="#e8e8e8"/>
+    <circle cx="690" cy="810" r="40" fill="#0a0618"/><circle cx="690" cy="810" r="18" fill="#e8e8e8"/>
+    <rect x="330" y="760" width="26" height="14" rx="6" fill="#ffe9a8"/>
+  </g>
+  <!-- two friends silhouettes -->
+  <g fill="#0a0618">
+    <circle cx="880" cy="640" r="34"/><path d="M830 800 Q830 700 880 692 Q930 700 930 800 Z"/>
+    <circle cx="990" cy="650" r="32"/><path d="M945 800 Q945 710 990 702 Q1035 710 1035 800 Z"/>
+  </g>
+  <g stroke="#ff5e9e" stroke-width="4" stroke-linecap="round" opacity=".9"><path d="M60 880 q40 -14 80 0 q40 -14 80 0"/><path d="M820 880 q40 -14 80 0 q40 -14 80 0"/></g>
+</svg>

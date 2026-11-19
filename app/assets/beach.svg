@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b1055"/><stop offset=".45" stop-color="#c62b7e"/>
+      <stop offset=".75" stop-color="#ff7e4a"/><stop offset="1" stop-color="#ffc46b"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff9a5a"/><stop offset="1" stop-color="#3b1d6e"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a2b5e"/><stop offset="1" stop-color="#1c1030"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#sky)"/>
+  <circle cx="540" cy="560" r="190" fill="#ffe9a8"/>
+  <circle cx="540" cy="560" r="150" fill="#ffd76a"/>
+  <rect x="0" y="640" width="1080" height="440" fill="url(#sea)"/>
+  <g fill="#ff8f5e" opacity=".55"><rect x="120" y="660" width="840" height="10"/><rect x="200" y="700" width="680" height="8"/><rect x="300" y="745" width="480" height="7"/></g>
+  <rect x="0" y="820" width="1080" height="260" fill="url(#road)"/>
+  <rect x="0" y="820" width="1080" height="14" fill="#ffd76a"/>
+  <g stroke="#ffd76a" stroke-width="10" stroke-dasharray="60 46"><line x1="540" y1="860" x2="540" y2="1080"/></g>
+  <!-- palms left -->
+  <g fill="#1c1030">
+    <path d="M150 830 Q140 620 170 520 L186 522 Q170 640 190 828 Z"/>
+    <path d="M178 520 Q90 470 40 500 Q120 500 160 540 Q110 560 60 600 Q140 590 175 545 Q200 470 280 450 Q210 500 190 540 Q260 520 320 560 Q240 560 180 555 Z"/>
+  </g>
+  <!-- palms right -->
+  <g fill="#241239">
+    <path d="M950 830 Q960 650 930 560 L914 562 Q930 660 910 828 Z"/>
+    <path d="M922 560 Q1010 510 1060 540 Q980 540 940 575 Q990 595 1040 635 Q960 625 925 585 Q900 510 820 490 Q890 540 910 575 Q840 555 780 595 Q860 595 920 590 Z"/>
+  </g>
+  <!-- convertible -->
+  <g>
+    <path d="M300 900 L330 830 L420 800 L700 800 L790 850 L830 900 Z" fill="#d9234f"/>
+    <path d="M340 835 L420 808 L690 808 L770 848 L360 848 Z" fill="#1c1030"/>
+    <rect x="330" y="880" width="480" height="26" rx="10" fill="#8f1030"/>
+    <circle cx="420" cy="920" r="52" fill="#140a24"/><circle cx="420" cy="920" r="26" fill="#e8e8e8"/>
+    <circle cx="720" cy="920" r="52" fill="#140a24"/><circle cx="720" cy="920" r="26" fill="#e8e8e8"/>
+    <rect x="120" y="880" width="60" height="14" rx="7" fill="#ffe9a8"/>
+    <rect x="880" y="880" width="60" height="14" rx="7" fill="#ff5e7a"/>
+  </g>
+  <!-- birds -->
+  <g stroke="#1c1030" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M300 300 q20 -18 40 0 q20 -18 40 0"/><path d="M700 240 q16 -14 32 0 q16 -14 32 0"/><path d="M820 360 q14 -12 28 0 q14 -12 28 0"/>
+  </g>
+</svg>
