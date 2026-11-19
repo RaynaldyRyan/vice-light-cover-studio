@@ -1,48 +1,97 @@
-// Fixed scenes for screenshots: ?shot=editor shows the studio with sample photos
-// loaded; ?shot=cover shows only the exported cover at full size (the PNG the
-// app itself drew, displayed at the gate's largest size). window.__shotReady is
-// set once the fonts are ready and the cover is painted.
-export async function runShot(shot, query, api) {
-  const { state, applyScene } = api;
-  const layout = query.get('layout');
-  const grade = query.get('grade');
-  const size = query.get('size');
-  const title = query.get('title');
-  const subtitle = query.get('subtitle');
-  const patch = {};
-  if (layout) patch.layout = layout;
-  if (grade) patch.grade = grade;
-  if (size) patch.size = size;
-  if (title) patch.title = title;
-  if (subtitle) patch.subtitle = subtitle;
-  if (shot === 'cover') {
-    document.body.classList.add('shot-cover');
-    // A cover shot uses the 4-panel grid by default, the strongest poster look.
-    if (!layout) patch.layout = 'grid4';
-    if (!grade) patch.grade = 'sunset';
-    if (!title) patch.title = 'VICE LIGHT';
-    if (!subtitle) patch.subtitle = 'sunset over the boulevard';
-  }
-  if (shot === 'story') {
-    // Portrait story cover: pink/cyan grade, satirical GTA-energy title.
-    document.body.classList.add('shot-cover');
-    if (!layout) patch.layout = 'grid4';
-    if (!grade) patch.grade = 'pinkcyan';
-    if (!size) patch.size = 'portrait';
-    if (!title) patch.title = 'NEON BOULEVARD';
-    if (!subtitle) patch.subtitle = 'midnight on ocean drive';
-  }
-  if (shot === 'wide') {
-    // Wide hero cover: golden-hour grade, satirical GTA-energy title.
-    document.body.classList.add('shot-cover');
-    if (!layout) patch.layout = 'hero3';
-    if (!grade) patch.grade = 'golden';
-    if (!size) patch.size = 'wide';
-    if (!title) patch.title = 'SUNSET HEIST';
-    if (!subtitle) patch.subtitle = 'one last score at golden hour';
-  }
-  applyScene(patch);
-  try { await document.fonts.ready; } catch { /* fall back to system fonts */ }
-  api.renderNow();
-  requestAnimationFrame(() => requestAnimationFrame(() => { window.__shotReady = true; }));
+// Screenshot scenarios for Vice Light Cover Studio.
+// Each scenario is one dossier screenshot: which scene, layout and grade it
+// shows, the caption on the cover, and the pixel size of the shot. The app
+// (main.js) applies a scenario when the page is opened with ?shot=<id>, and
+// the maker's runner renders each one headlessly. Pure data + pure parsing:
+// no DOM here, so the runner can import this file in Node as well.
+
+export const SHOTS = [
+  {
+    id: 'cover',
+    file: '01-cover.jpg',
+    mode: 'cover',
+    w: 1080,
+    h: 1080,
+    scene: 'pier',
+    layout: 'grid4',
+    grade: 'sunset',
+    title: 'SUNSET HEIST',
+    subtitle: 'one last score on the pier',
+  },
+  {
+    id: 'editor',
+    file: '02-editor.jpg',
+    mode: 'editor',
+    w: 1280,
+    h: 720,
+    scene: 'beach',
+    layout: 'heroThree',
+    grade: 'neon',
+    title: 'BOULEVARD QUEEN',
+    subtitle: 'queen of the boulevard',
+  },
+  {
+    id: 'story',
+    file: '03-story.jpg',
+    mode: 'cover',
+    w: 1080,
+    h: 1080,
+    scene: 'neon',
+    layout: 'heroThree',
+    grade: 'pinkcyan',
+    title: 'NEON NIGHTS',
+    subtitle: 'the city never sleeps',
+  },
+  {
+    id: 'wide',
+    file: '04-wide.jpg',
+    mode: 'wide',
+    w: 1280,
+    h: 720,
+    scene: 'rooftop',
+    layout: 'storyStack',
+    grade: 'golden',
+    title: 'ROOFTOP DAWN',
+    subtitle: 'above it all',
+  },
+];
+
+/** The URL query a scenario needs (?shot=<id>&scene=...&layout=...&grade=...). */
+export function shotQuery(shot) {
+  const q = new URLSearchParams({
+    shot: shot.id,
+    scene: shot.scene,
+    layout: shot.layout,
+    grade: shot.grade,
+    title: shot.title,
+    subtitle: shot.subtitle,
+  });
+  return `?${q.toString()}`;
+}
+
+/**
+ * Parses a page query (?shot=cover&scene=pier&layout=grid4&grade=sunset
+ * &title=...&subtitle=...) into the scenario the page should render, or
+ * null for a normal interactive visit. Unknown ids fall back to the first
+ * scenario's shape with the caller's own values, so a hand-typed query
+ * still renders something sensible.
+ */
+export function shotFromQuery(search) {
+  const params = new URLSearchParams(search);
+  const id = params.get('shot');
+  if (!id) return null;
+  const base = SHOTS.find((s) => s.id === id) ?? SHOTS[0];
+  const pick = (key, fallback) => {
+    const v = params.get(key);
+    return v === null || v === '' ? fallback : v;
+  };
+  return {
+    ...base,
+    id,
+    scene: pick('scene', base.scene),
+    layout: pick('layout', base.layout),
+    grade: pick('grade', base.grade),
+    title: pick('title', base.title),
+    subtitle: pick('subtitle', base.subtitle),
+  };
 }
