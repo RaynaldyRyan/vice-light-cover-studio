@@ -28,6 +28,21 @@ if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), joi
 // screenshots or one over 256 KiB; more than 993 files in app/ or 48 MiB of app
 // files, in all, or a path under app/ over 1000 bytes: app/ counts beside
 // /output's own 1000-entry cap, its screenshots/ and dossier.json).
+// Check the caps this program can check before the dossier is written, so a
+// bad handoff fails here with a plain message instead of at the gate: the
+// screenshots must be 3 or 4, each at most 256 KiB, and the dossier at most
+// 1.5 MiB once written.
+const shotDir = join(here, 'screenshots');
+const shotFiles = existsSync(shotDir)
+  ? readdirSync(shotDir).filter((f) => !f.startsWith('.'))
+  : [];
+if (shotFiles.length < 3 || shotFiles.length > 4) {
+  throw new Error(`handoff refused: ${shotFiles.length} screenshot(s), the gate wants 3 or 4`);
+}
+for (const f of shotFiles) {
+  const bytes = statSync(join(shotDir, f)).size;
+  if (bytes > 262144) throw new Error(`handoff refused: screenshot ${f} is ${bytes} bytes, over the 256 KiB cap`);
+}
 writeFileSync(
   join(out, 'dossier.json'),
   buildDossier(out, {
@@ -38,6 +53,8 @@ writeFileSync(
     app_path_max_bytes: 1000,
   }),
 );
+const dossierBytes0 = statSync(join(out, 'dossier.json')).size;
+if (dossierBytes0 > 1572864) throw new Error(`handoff refused: dossier.json is ${dossierBytes0} bytes, over the 1.5 MiB cap`);
 
 // Report what was handed in, so a run's result is checkable at a glance: the
 // screenshot count and the dossier size the gate caps at 1.5 MiB.
