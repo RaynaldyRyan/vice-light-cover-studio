@@ -155,7 +155,8 @@ export function stretchLuminance(lum, n) {
 }
 
 /** Posterize + gradient-map + Sobel ink + grain over one panel rect, in place. */
-export function gradePanel(ctx, rect, grade, inkStrength, grainAmount, seed) {  const x = Math.max(0, Math.round(rect.x)), y = Math.max(0, Math.round(rect.y));
+export function gradePanel(ctx, rect, grade, inkStrength, grainAmount, seed) {
+  const x = Math.max(0, Math.round(rect.x)), y = Math.max(0, Math.round(rect.y));
   const w = Math.min(Math.round(rect.w), ctx.canvas.width - x);
   const h = Math.min(Math.round(rect.h), ctx.canvas.height - y);
   if (w < 4 || h < 4) return;
